@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -7,10 +7,18 @@ import { Character } from '../../interfaces/character.interface';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
-  @Input()
-  public characterList: Character[] = [{
+  @Input() characterList: Character[] = [{
+    id: '',
     name: "Trunks",
-    power: 40000
+    power: 400030
   }]
+
+  @Output() onDelete = new EventEmitter<string>();
+
+  onDeleteCharacter(id: string): void {
+    console.log(id)
+    this.onDelete.emit(id)
+    console.log("Se emitio el index: " + id + " desde list.component.ts (Child)")
+  }
 
 }

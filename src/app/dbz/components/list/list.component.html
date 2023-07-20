@@ -7,17 +7,21 @@
      let isLast = last
      let isEven = even
      let isOdd = odd" 
-     class="list-group-item" 
+     class="list-group-item d-flex justify-content-between align-items-center" 
      [ngClass]="{
         'list-group-item-success': isEven,
-        'list-group-item-dark': isLast}">
-        <span class="text-primary">{{i}}. </span>
+        'list-group-item-danger': isLast}">
 
-        <span>{{item.name}}</span>
+        <div>
+            <span class="text-primary">{{i+1}}. </span>
+            <span>{{item.name}}</span>
+            <strong> - Power: </strong>
+            <span>{{item.power}}</span>
+            <span>{{item.id}}</span>
+        </div>
 
-        <strong> - Power: </strong>
+        <button class="btn btn-danger" (click)="onDeleteCharacter(item.id!)">X</button>
 
-        <span>{{item.power}}</span>
 
 
     </li>
